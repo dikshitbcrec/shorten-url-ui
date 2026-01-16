@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import AnimatedNumber from "./AnimatedNumber";
@@ -9,14 +9,13 @@ export default function UrlShortener() {
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080/";
-
+  const apiUrlRef = useRef(process.env.REACT_APP_API_URL || "http://localhost:8080/");
   const shortenUrl = async () => {
     if (!url) return;
     try {
       setLoading(true);
       setError("");
-      const res = await axios.post(apiUrl+"tiny-url", { url });
+      const res = await axios.post(apiUrlRef.current+"tiny-url", { url });
       setShortUrl(res.data.shortUrl);
       setTotalCount(res.data.Count);
     } catch (err) {
@@ -31,7 +30,7 @@ export default function UrlShortener() {
   // This code runs after the component mounts
   const fetchTotalCount = async () => {
     try {
-      const res = await axios.get(apiUrl+"count");
+      const res = await axios.get(apiUrlRef.current+"count");
        setTotalCount(res.data);
     } catch (err) {
       console.error(err);
