@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# URL Shortener
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack URL shortening service that converts long URLs into short, shareable links with real-time analytics.
 
-## Available Scripts
+## 📸 Screenshots
+![alt text](image.png)
 
-In the project directory, you can run:
 
-### `npm start`
+## 🚀 Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[View Live Application](https://shorten-url-ui-tau.vercel.app/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📋 Features
 
-### `npm test`
+- **URL Shortening**: Generate short, unique codes for long URLs using Base62 encoding
+- **URL Redirection**: Seamlessly redirect users to original URLs
+- **Analytics Dashboard**: Track total number of shortened URLs
+- **Responsive Design**: Modern UI with animated 3D background effects
+- **RESTful API**: Clean API architecture for URL operations
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Tech Stack
 
-### `npm run build`
+**Frontend:**
+- React.js
+- Tailwind CSS
+- Axios for API calls
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Backend:**
+- Spring Boot
+- MongoDB
+- Base62 encoding algorithm
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Deployment:**
+- Frontend: Vercel
+- Backend: [Add your backend hosting]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📦 Installation & Setup
 
-### `npm run eject`
+### Prerequisites
+- Node.js (v14+)
+- Java 17+
+- MongoDB
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Frontend Setup
+```bash
+cd shortenr-url
+npm install
+npm start
+```
+Application runs on `http://localhost:3000`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend Setup
+```bash
+cd shortener
+./mvnw spring-boot:run
+```
+Server runs on `http://localhost:8080`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Environment Variables
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Backend** (`application.properties`):
+```properties
+spring.data.mongodb.uri=your_mongodb_uri
+base.url=http://localhost:8080
+```
 
-## Learn More
+## 🔌 API Endpoints
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/shorten` | Create short URL |
+| GET | `/{shortCode}` | Redirect to original URL |
+| GET | `/api/count` | Get total URLs count |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🏗️ Architecture
 
-### Code Splitting
+- **Base62 Encoding**: Generates 7-character unique short codes
+- **MongoDB**: Stores URL mappings and counters
+- **Atomic Counter**: Thread-safe URL counting using MongoDB's findAndModify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
