@@ -68,7 +68,7 @@ base.url=http://localhost:8080
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/shorten` | Create short URL |
+| POST | `/api/tiny-url` | Create short URL |
 | GET | `/{shortCode}` | Redirect to original URL |
 | GET | `/api/count` | Get total URLs count |
 
